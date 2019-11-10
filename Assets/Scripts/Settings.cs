@@ -6,6 +6,6 @@ public class Settings : MonoBehaviour
 {
     public void Slider()
     {
-
+        // заглушка
     }
 }

@@ -44,39 +44,38 @@ public class Player : MonoBehaviour
         previus = rb.velocity; // Переменная для дебага
 
         // Управление для акселерометра
-        if (Input.acceleration.y != 0)
+        if (Input.acceleration.y != 0 && (rb.velocity.x < maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(0, 0, Input.acceleration.y);
-        if (Input.acceleration.x != 0)
+        if (Input.acceleration.x != 0 && (rb.velocity.y < maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(Input.acceleration.x, 0, 0);
-        if (Input.acceleration.z >= 11 && Physics.Raycast(transform.position, Vector3.down, out hit, 1f) && hit.transform.gameObject.tag == "Ground")
+        if (Input.acceleration.z >= 11 && Physics.Raycast(transform.position, Vector3.down, out hit, 1f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
             rb.velocity += new Vector3(0, 10f, 0);
 
         // Управление для клавиатуры c ограничением
-        if (Input.GetKey(KeyCode.W) && (rb.velocity.z < maxSpeed))
+        if (Input.GetKey(KeyCode.W) && (rb.velocity.z < maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(0, 0, speed);
-        if (Input.GetKey(KeyCode.A) && (rb.velocity.x > -maxSpeed))
+        if (Input.GetKey(KeyCode.A) && (rb.velocity.x > -maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(-speed, 0, 0);
-        if (Input.GetKey(KeyCode.D) && (rb.velocity.x < maxSpeed))
+        if (Input.GetKey(KeyCode.D) && (rb.velocity.x < maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(speed, 0, 0);
-        if (Input.GetKey(KeyCode.S) && (rb.velocity.z > -maxSpeed))
+        if (Input.GetKey(KeyCode.S) && (rb.velocity.z > -maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(0, 0, -speed);
         // Прыжок
-        if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 1f) && hit.transform.gameObject.tag == "Ground")
+        if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 1f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
             rb.velocity += new Vector3(0, 10f, 0);
 
         // проверка проигрыша
         if (isDead)
         { 
-            from.SetActive(false);
+        from.SetActive(false);
         toL.SetActive(true);
-        Time.timeScale = 0;
         }
+
         // проверка победы
         if (finish)
         {
             from.SetActive(false);
             toW.SetActive(true);
-            Time.timeScale = 0;
         }
 
         // дебаг передвижения
