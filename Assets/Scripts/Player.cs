@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             rb.velocity += new Vector3(0, 0, Input.acceleration.y);
         if (Input.acceleration.x != 0 && (rb.velocity.y < maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(Input.acceleration.x, 0, 0);
-        if (Input.acceleration.z >= 11 && Physics.Raycast(transform.position, Vector3.down, out hit, 1f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
+        if (Input.acceleration.z >= 11 && Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
             rb.velocity += new Vector3(0, 10f, 0);
 
         // Управление для клавиатуры c ограничением
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.S) && (rb.velocity.z > -maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(0, 0, -speed);
         // Прыжок
-        if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 1f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
+        if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
             rb.velocity += new Vector3(0, 10f, 0);
 
         // проверка проигрыша
