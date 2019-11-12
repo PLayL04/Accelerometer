@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
             rb.velocity += new Vector3(0, 0, -speed);
         // Прыжок
         if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
-            rb.velocity += new Vector3(0, 5f, 0);
+            rb.velocity += new Vector3(0, 10f, 0);
 
         // проверка проигрыша
         if (isDead)
