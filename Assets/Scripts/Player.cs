@@ -9,8 +9,9 @@ public class Player : MonoBehaviour
     private bool finish = false; // победа
     private Rigidbody rb; // Объявление новой переменной Rigidbody
     private float speed = 1f; // Скорость движения объекта
-    private float maxSpeed = 10f; // максимальная скорость
+    private float maxSpeed = 6f; // максимальная скорость
     private Vector3 previus; // переменная для дебага положения
+    public Transform camPos;
 
     // канвасы
     public GameObject toL;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
             rb.velocity += new Vector3(0, 0, Input.acceleration.y);
         if (Input.acceleration.x != 0 && (rb.velocity.y < maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(Input.acceleration.x, 0, 0);
-        
+
 
         // Управление для клавиатуры c ограничением
         if (Input.GetKey(KeyCode.W) && (rb.velocity.z < maxSpeed) && !isDead && !finish)
@@ -61,7 +62,10 @@ public class Player : MonoBehaviour
             rb.velocity += new Vector3(0, 0, -speed);
         // Прыжок
         if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
-            rb.velocity += new Vector3(0, 10f, 0);
+            rb.velocity += new Vector3(0, 15f, 0);
+        // ограничени скорости
+        if (rb.velocity.magnitude > maxSpeed)
+            rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -maxSpeed, maxSpeed));
 
         // проверка проигрыша
         if (isDead)
@@ -79,12 +83,19 @@ public class Player : MonoBehaviour
 
         // дебаг передвижения
         Debug.Log(previus);
+
+        camPos.position = transform.position + new Vector3(0, 12, -8);
     }
     public void OnClick()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
             rb.velocity += new Vector3(0, 10f, 0);
+    }
+
+    public void Onclick()
+    {
+        rb.velocity = new Vector3(0f, 0f, 0f);
     }
 }
 
