@@ -45,20 +45,21 @@ public class Player : MonoBehaviour
         previus = rb.velocity; // Переменная для дебага
 
         // Управление для акселерометра
-        if (Input.acceleration.y != 0 && (rb.velocity.x < maxSpeed) && !isDead && !finish)
+        if (Input.acceleration.y != 0 && !isDead && !finish)
             rb.velocity += new Vector3(0, 0, Input.acceleration.y);
-        if (Input.acceleration.x != 0 && (rb.velocity.y < maxSpeed) && !isDead && !finish)
+        if (Input.acceleration.x != 0 && !isDead && !finish)
             rb.velocity += new Vector3(Input.acceleration.x, 0, 0);
 
 
         // Управление для клавиатуры c ограничением
-        if (Input.GetKey(KeyCode.W) && (rb.velocity.z < maxSpeed) && !isDead && !finish)
+        if (Input.GetKey(KeyCode.W) && !isDead && !finish)
             rb.velocity += new Vector3(0, 0, speed);
-        if (Input.GetKey(KeyCode.A) && (rb.velocity.x > -maxSpeed) && !isDead && !finish)
+        if (Input.GetKey(KeyCode.A) && !isDead && !finish)
             rb.velocity += new Vector3(-speed, 0, 0);
-        if (Input.GetKey(KeyCode.D) && (rb.velocity.x < maxSpeed) && !isDead && !finish)
+        if (Input.GetKey(KeyCode.D) && !isDead && !finish)
             rb.velocity += new Vector3(speed, 0, 0);
-        if (Input.GetKey(KeyCode.S) && (rb.velocity.z > -maxSpeed) && !isDead && !finish)
+        if (Input.GetKey(KeyCode.S) && !isDead && !finish)
+            //if (Input.GetKey(KeyCode.S) && (rb.velocity.z > -maxSpeed) && !isDead && !finish)
             rb.velocity += new Vector3(0, 0, -speed);
         // Прыжок
         if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)

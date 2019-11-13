@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.2.3 Lovushka Jokera
+  bundleVersion: 0.2.4 Nesi Sviney
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -280,7 +280,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: d20c9fa26a764aa4abe796d52e2b0a61, type: 3}
+      m_Icon: {fileID: 2800000, guid: 7a4a8c6846b9f304a88f2a04e6a68127, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
