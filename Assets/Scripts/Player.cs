@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private bool finish = false; // победа
     private Rigidbody rb; // Объявление новой переменной Rigidbody
     private float speed = 1f; // Скорость движения объекта
-    private float maxSpeed = 6f; // максимальная скорость
+    private float maxSpeed = 8f; // максимальная скорость
     private Vector3 previus; // переменная для дебага положения
     public Transform camPos;
 
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
             rb.velocity += new Vector3(0, 0, -speed);
         // Прыжок
         if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
-            rb.velocity += new Vector3(0, 15f, 0);
+            rb.velocity += new Vector3(0, 20f, 0);
         // ограничени скорости
         if (rb.velocity.magnitude > maxSpeed)
             rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -maxSpeed, maxSpeed));
