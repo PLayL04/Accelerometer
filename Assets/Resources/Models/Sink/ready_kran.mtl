@@ -1,0 +1,12 @@
+newmtl wire_227153153
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd ready_kran_Albedo.tga
+map_Ks ready_kran_Specular.tga
+bump ready_kran_Height.tga
+map_bump ready_kran_Normal.tga

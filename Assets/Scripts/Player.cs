@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     private float maxSpeed = 8f; // максимальная скорость
     private Vector3 previus; // переменная для дебага положения
     public Transform camPos;
+    public Transform ggPos;
+    public float magic;
+    public float jump;
 
     // канвасы
     public GameObject toL;
@@ -63,7 +66,7 @@ public class Player : MonoBehaviour
             rb.velocity += new Vector3(0, 0, -speed);
         // Прыжок
         if (Input.GetKeyUp(KeyCode.Space) && Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
-            rb.velocity += new Vector3(0, 20f, 0);
+            rb.velocity += new Vector3(0, jump, 0);
         // ограничени скорости
         if (rb.velocity.magnitude > maxSpeed)
             rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y, Mathf.Clamp(rb.velocity.z, -maxSpeed, maxSpeed));
@@ -86,12 +89,13 @@ public class Player : MonoBehaviour
         Debug.Log(previus);
 
         camPos.position = transform.position + new Vector3(0, 12, -8);
+        ggPos.position = transform.position + new Vector3(0, 0, magic);
     }
     public void OnClick()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f) && hit.transform.gameObject.tag == "Ground" && !isDead && !finish)
-            rb.velocity += new Vector3(0, 10f, 0);
+            rb.velocity += new Vector3(0, jump, 0);
     }
 
     public void Onclick()
