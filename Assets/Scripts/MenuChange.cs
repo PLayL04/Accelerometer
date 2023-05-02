@@ -20,11 +20,16 @@ public class MenuChange : MonoBehaviour
         SceneManager.LoadScene("Main", LoadSceneMode.Single);
     }
 
+
     public void Quit()
     {
         Application.Quit();
     }
 
+    public void Loadscene()
+    {
+        SceneManager.LoadScene("Main1", LoadSceneMode.Single);
+    }
 }
 
 

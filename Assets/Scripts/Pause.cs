@@ -31,4 +31,8 @@ public class Pause : MonoBehaviour
     {
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
+    public void Ed2()
+    {
+        SceneManager.LoadScene("Main1", LoadSceneMode.Single);
+    }
 }
